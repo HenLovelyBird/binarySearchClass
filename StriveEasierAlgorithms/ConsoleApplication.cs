@@ -7,17 +7,18 @@ namespace StriveEasierAlgorithms
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("\nWelcome to Strive Easier Algorithms!");
+            Console.WriteLine("\n heh-heh, what are you looking at num Muncher!");
 
             while (true) // Show this menu until the user actually wants to exit
             {
                 Console.WriteLine(@"
  ----------------------------------------
-/ Please select you algorithm:           \
+/  Pick Something besides your nose:     \
 |   1. Greatest Common Divisor           |
 \   2. Bubble Sort                       /
 |   3. Binary Search                     |
-\   4. Exit                              /   
+/   4. Boot Cli                          \
+\   5. Exit                              /
  ---------------------------------------- 
    \         __------~~-,
     \      ,'            ,
@@ -43,7 +44,8 @@ namespace StriveEasierAlgorithms
                     case 1: RunGcd(); break;
                     case 2: RunBubbleSort(); break;
                     case 3: RunBinarySearch(); break;
-                    case 4: return;
+                    case 4: Boot Cli(); break;
+                    case 5: return;
                     default: Console.WriteLine("Please select one of the options below."); break;
                 }
             }
@@ -125,25 +127,41 @@ namespace StriveEasierAlgorithms
         }
 
 
-        private static int RunBinarySearch();
+        private static void RunBinarySearch()
         {
 
-          List<int> collectionToSearchIn = new List<int>(5, 8, 9, 11, 12, 13, 15, 18, 19, 24, 25, 27, 29, 34, 35, 39);
+            Console.WriteLine("heh-heh, it binary!");
+            List<int> collectionToSearchIn = new List<int>();
 
+            Console.WriteLine("So, what's yer guess, dipwad? or(-ba quitter):");
 
-        Console.WriteLine("Pick a number in the arr"); break;
+            int numGuess = ReadAnIntegerInputFromTheUser();
+            BinarySearcher Search = new BinarySearcher();
+            int arr = Search.Search(collectionToSearchIn, numGuess);
+            Console.WriteLine($"Hab Sie! {arr}"); 
+        
 
-          return numPicked();
+        }
 
-        BinarySearcher Search = new BinarySearcher();
+    //private static void BootCli()
+    //{
+    //        switch (ReadCmdFromUser)
+    //        {
+    //            case 1: dir();
+    //            case 2: ls();
+    //            case 3: pwd();
+    //            case 4: cd..();
+    //            case 5: cd <FolderName>();
+    //            case 6: del <FileName>();
+    //            case 7: mv()<FileName to Path>;
+    //            case 8: exit();
+    //            case 9: arrowUp();
+    //            case 10: arrowdown();
 
-        //if number is incorrect, split to mid
-        //: return *ding! ding! ding!*
-        //if split to mid, begin the process again
+    //        }
+    //    }
 
     }
 
-    }
-
-
+}
 
