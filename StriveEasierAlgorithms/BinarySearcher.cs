@@ -15,35 +15,41 @@ namespace StriveEasierAlgorithms
             int begNumToMidPoints = 0;
             int minNum = 0;
             int maxNum = collectionToSearchIn.Count;
-            int medNums = collectionToSearchIn.Count;
+            int medNums;
 
             while(true)
             {
-                if (numToSearch == collectionToSearchIn[medNums - 1])
-                {
-                    Console.WriteLine("Wow! You got it, Babe!");
+                // Let' adjust current mid point
+                medNums = (maxNum - minNum) / 2 + minNum;
 
+                // Increase iterations number
+                begNumToMidPoints++;
+
+                // Get the number you0re currently look at
+                int currentlyInspectedNumber = collectionToSearchIn[medNums];
+
+                // Check if equals, greater or lower than
+                if (numToSearch == currentlyInspectedNumber)
+                {
+                    Console.WriteLine("heh, Must be luck or total Nerdpants!");
+                    return medNums + 1;
                 }
 
-                else if (numToSearch > collectionToSearchIn[medNums - 1])
+                else if (numToSearch > currentlyInspectedNumber)
 
                 {
-                    Console.WriteLine("Should be Higher");
-                    begNumToMidPoints++;
+                    Console.WriteLine("Should be Higher, dunkus");
                     minNum = medNums;
-                    medNums = (maxNum - minNum) / 2;
                 }
 
-                else if (numToSearch < collectionToSearchIn[medNums - 1])
+                else
 
                 {
-                    Console.WriteLine("Should be Lower");
-                    begNumToMidPoints++;
+                    Console.WriteLine("Should be Lower, durnkus");
                     maxNum = medNums;
-                    medNums = (maxNum - minNum) / 2;
                 }
 
-                Console.WriteLine("$Total MidPoints: { begNumToMidPoints}");
+                Console.WriteLine($"MidPoints: {begNumToMidPoints}");
                 Console.WriteLine(string.Join("|", collectionToSearchIn));
                 Console.WriteLine(begNumToMidPoints);
 

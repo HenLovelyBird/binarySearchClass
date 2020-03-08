@@ -5,13 +5,36 @@ namespace StriveEasierAlgorithms
 {
     class ConsoleApplication
     {
+
         static void Main(string[] args)
         {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.BackgroundColor = ConsoleColor.Black;
+
             Console.WriteLine("\n heh-heh, what are you looking at num Muncher!");
+
 
             while (true) // Show this menu until the user actually wants to exit
             {
-                Console.WriteLine(@"
+                DisplayMenuHead();
+
+
+                switch (ReadAnIntegerInputFromTheUser())
+                {
+                    case 1: RunGcd(); break;
+                    case 2: RunBubbleSort(); break;
+                    case 3: RunBinarySearch(); break;
+                    //case 4: Boot Cli(); break;
+                    case 5: return;
+                        //default: Console.WriteLine("Please select one of the options below."); break;
+                }
+            }
+
+        }
+
+        private static void DisplayMenuHead()
+        {
+            Console.WriteLine(@"
  ----------------------------------------
 /  Pick Something besides your nose:     \
 |   1. Greatest Common Divisor           |
@@ -39,19 +62,7 @@ namespace StriveEasierAlgorithms
               __/-___-- -__
              /            _ \
 ");
-                switch (ReadAnIntegerInputFromTheUser())
-                {
-                    case 1: RunGcd(); break;
-                    case 2: RunBubbleSort(); break;
-                    case 3: RunBinarySearch(); break;
-                    case 4: Boot Cli(); break;
-                    case 5: return;
-                    default: Console.WriteLine("Please select one of the options below."); break;
-                }
-            }
-
         }
-
         /// <summary>
         /// Handles the user interface for providing inputs to the GcdEuclidSolver
         /// </summary>
@@ -133,35 +144,48 @@ namespace StriveEasierAlgorithms
             Console.WriteLine("heh-heh, it binary!");
             List<int> collectionToSearchIn = new List<int>();
 
-            Console.WriteLine("So, what's yer guess, dipwad? or(-ba quitter):");
+            Console.WriteLine("So, what's yer guess, dipwad? (5, 8, 9, 11, 12, 13, 15, 18, 19, 24, 25, 27, 29, 34, 35, ODER 39? )):");
 
-            int numGuess = ReadAnIntegerInputFromTheUser();
-            BinarySearcher Search = new BinarySearcher();
-            int arr = Search.Search(collectionToSearchIn, numGuess);
-            Console.WriteLine($"Hab Sie! {arr}"); 
+            while (true)
+            {
+                int numGuess = ReadAnIntegerInputFromTheUser();
+                if (numGuess > 0)
+                    Console.WriteLine("heh-heh, you either suck or this is totally rigged");
+
+                //then run an instance of the BinarySearcher
+                BinarySearcher Search = new BinarySearcher();
+                //this method will distinguish whether the guess was too high, too low, or just right
+                //And return a msg relevant to that fact.
+                int numYouWereLookingFor = Search.Search(collectionToSearchIn, numGuess);
+                Console.WriteLine($"Hab Sie! {numYouWereLookingFor}");
+            }
+           
+
+        }
         
+
+            //private static void BootCli()
+            //{
+            //        switch (ReadCmdFromUser)
+            //        {
+            //            case 1: dir();
+            //            case 2: ls();
+            //            case 3: pwd();
+            //            case 4: cd..();
+            //            case 5: cd <FolderName>();
+            //            case 6: del <FileName>();
+            //            case 7: mv()<FileName to Path>;
+            //            case 8: exit();
+            //            case 9: arrowUp();
+            //            case 10: arrowdown();
+
+            //        }
+            //    }
 
         }
 
-    //private static void BootCli()
-    //{
-    //        switch (ReadCmdFromUser)
-    //        {
-    //            case 1: dir();
-    //            case 2: ls();
-    //            case 3: pwd();
-    //            case 4: cd..();
-    //            case 5: cd <FolderName>();
-    //            case 6: del <FileName>();
-    //            case 7: mv()<FileName to Path>;
-    //            case 8: exit();
-    //            case 9: arrowUp();
-    //            case 10: arrowdown();
-
-    //        }
-    //    }
-
     }
 
-}
+
+    
 
